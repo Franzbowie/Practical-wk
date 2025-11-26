@@ -29,8 +29,9 @@
 
             for (int i = 0; i < trainees.Count; i++)
             {
+                studentsInfo += "Имя: ";
                 studentsInfo += trainees[i].Name;
-                studentsInfo += " ";
+                studentsInfo += ", язык программирования: ";
                 studentsInfo += trainees[i].ProgrammingLanguage;
                 studentsInfo += "\n";
             }

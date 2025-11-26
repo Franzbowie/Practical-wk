@@ -27,8 +27,9 @@
 
             for (int i = 0; i < trainees.Count; i++)
             {
+                studentsInfo += "Имя: ";
                 studentsInfo += trainees[i].Name;
-                studentsInfo += " ";
+                studentsInfo += ", успеваемость: ";
                 studentsInfo += trainees[i].Achievement;
                 studentsInfo += "\n";
             }
