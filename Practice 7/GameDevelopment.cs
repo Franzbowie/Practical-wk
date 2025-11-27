@@ -4,6 +4,7 @@
     {
         public GameDevelopment(string title, int numberOfPositions) : base(title, numberOfPositions) { }
 
+        //Помещает в коллекцию стажеров кандидатов не ниже 2 курса, высокой успеваемостью, языком C# или C++
         public override void TraineeDistribution(List<Student> candidates)
         {
             int count = 0;
@@ -23,6 +24,7 @@
             }
         }
 
+        //Выводит информацию о стажерах 
         public new string PrintTrainees(List<Student> trainees)
         {
             string studentsInfo = "";

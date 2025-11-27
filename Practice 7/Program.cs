@@ -28,9 +28,11 @@ namespace ConsoleApp1
             departments.Add(dataSciense);
             departments.Add(mobileApplicationDevelopment);
 
+            //Размещение кандидатов в отделы 
             foreach (Department department in departments)
                 department.TraineeDistribution(candidates);
 
+            //Вывод списка стажеров в отделах
             foreach (Department department in departments)
             {
                 Console.WriteLine($"Подразделение: {department.Title}");

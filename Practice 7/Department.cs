@@ -13,6 +13,7 @@
             Trainees = new List<Student>();
         }
 
+        //Помещает в коллекцию стажеров кандидатов не ниже 2 курса
         public virtual void TraineeDistribution(List<Student> candidates)
         {
             for (int i = candidates.Count - 1; i >= 0; i--)
@@ -28,6 +29,7 @@
 
         }
 
+        //Выводит информацию о стажерах 
         public string PrintTrainees(List<Student> trainees)
         {
             string studentsInfo = "";
