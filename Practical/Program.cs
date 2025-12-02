@@ -26,9 +26,11 @@
             departments.Add(dataSciense);
             departments.Add(mobileApplicationDevelopment);
 
+            //Распределение кандидатов по отделам
             foreach (Department department in departments)
                 department.TraineeDistribution(candidates);
 
+            //Выводит информацию о стажерах 
             foreach (Department department in departments)
             {
                 Console.WriteLine($"Подразделение: {department.Title}");

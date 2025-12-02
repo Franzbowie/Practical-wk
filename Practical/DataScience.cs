@@ -4,6 +4,7 @@
     {
         public DataScience(string title, int numberOfPositions) : base(title, numberOfPositions) { }
 
+        //Помещает в коллекцию стажеров кандидатов с высокой успеваемостью и языком Python
         public override void TraineeDistribution(List<Student> candidates)
         {
             int count = 0;
