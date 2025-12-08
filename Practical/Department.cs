@@ -13,7 +13,10 @@
             Trainees = new List<Student>();
         }
 
-        //Помещает в коллекцию стажеров кандидатов не ниже 2 курса
+        /// <summary>
+        /// Помещает в коллекцию стажеров кандидатов со 2 курса и выше
+        /// </summary>
+        /// <param name="candidates"></param>
         public virtual void TraineeDistribution(List<Student> candidates)
         {
             for (int i = candidates.Count - 1; i >= 0; i--)

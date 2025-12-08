@@ -7,7 +7,9 @@
             public List<GentleSmartphone> Smartphones { get; private set; } = new List<GentleSmartphone>();
             public List<Customer> Customers { get; set; } = new List<Customer>();
 
-            //Продажа телефонов
+            /// <summary>
+            /// Продажа телефонов
+            /// </summary>
             public void SaleSmartphone()
             {
                 for (int i = Customers.Count - 1; i >= 0; i--)
