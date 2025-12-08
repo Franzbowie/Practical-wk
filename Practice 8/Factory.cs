@@ -1,10 +1,12 @@
-﻿namespace ConsoleApp1
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace ConsoleApp1
 {
     partial class Program
     {
         class Factory
         {
-            public List<GentleSmartphone> Smartphones { get; private set; } = new List<GentleSmartphone>();
+            private List<GentleSmartphone> Smartphones = new List<GentleSmartphone>();
             public List<Customer> Customers { get; set; } = new List<Customer>();
 
             /// <summary>
@@ -17,8 +19,8 @@
                     for (int j = Smartphones.Count - 1; j >= 0; j--)
                     {
                         //Если не нужен трансформатор
-                        if (Customers[i].GentleRate >= Smartphones[j].Sensor.Sensivity / 1.5
-                            && Customers[i].GentleRate <= Smartphones[j].Sensor.Sensivity * 2)
+                        if (Customers[i].GentleRate >= Smartphones[j].GetSensivity(Smartphones[j]) / 1.5
+                            && Customers[i].GentleRate <= Smartphones[j].GetSensivity(Smartphones[j]) * 2)
                         {
                             Customers[i].Smartphone = Smartphones[j];
                             Smartphones.RemoveAt(j);
@@ -26,8 +28,8 @@
                         }
 
                         //Если нужен умножитель
-                        else if (Customers[i].GentleRate >= Smartphones[j].Sensor.Sensivity * 2 / 1.5 &&
-                            Customers[i].GentleRate <= Smartphones[j].Sensor.Sensivity * 2 * 2)
+                        else if (Customers[i].GentleRate >= Smartphones[j].GetSensivity(Smartphones[j]) * 2 / 1.5 &&
+                            Customers[i].GentleRate <= Smartphones[j].GetSensivity(Smartphones[j]) * 2 * 2)
                         {
                             Customers[i].TransformModule = new Transformator(TransformatorType.Multiplier);
                             Customers[i].Smartphone = Smartphones[j];
@@ -36,8 +38,8 @@
                         }
 
                         //Если нужен делитель
-                        else if (Customers[i].GentleRate >= Smartphones[j].Sensor.Sensivity / 2 / 1.5 &&
-                            Customers[i].GentleRate <= Smartphones[j].Sensor.Sensivity / 2 * 2)
+                        else if (Customers[i].GentleRate >= Smartphones[j].GetSensivity(Smartphones[j]) / 2 / 1.5 &&
+                            Customers[i].GentleRate <= Smartphones[j].GetSensivity(Smartphones[j]) / 2 * 2)
                         {
                             Customers[i].TransformModule = new Transformator(TransformatorType.Divider);
                             Customers[i].Smartphone = Smartphones[j];
@@ -61,6 +63,22 @@
 
                 if (allHavePhones)
                     Smartphones.Clear();
+            }
+            /// <summary>
+            /// Чтение списка телефонов
+            /// </summary>
+            /// <returns>список телефонов</returns>
+            public List<GentleSmartphone> GetListSmartphones()
+            {
+                return Smartphones;
+            }
+            /// <summary>
+            /// Добавление телефона в список телефонов
+            /// </summary>
+            /// <param name="smartphone"></param>
+            public void AddSmartphone(GentleSmartphone smartphone)
+            {
+                Smartphones.Add(smartphone);
             }
         }
     }

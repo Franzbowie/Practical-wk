@@ -5,12 +5,16 @@
         class GentleSmartphone
         {
             public int SerialNumber { get; private set; }
-            public TactileSensor Sensor { get; private set; }
+            private TactileSensor Sensor;
 
             public GentleSmartphone(int serial, byte sensivity)
             {
                 SerialNumber = serial;
                 Sensor = new TactileSensor(sensivity);
+            }
+            public int GetSensivity(GentleSmartphone gentleSmartphone)
+            {
+                return gentleSmartphone.Sensor.Sensivity;
             }
         }
     }

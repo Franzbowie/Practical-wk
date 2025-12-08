@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Главный метод �
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice 8", "Practice 8\Practice 8.csproj", "{25570719-B54A-45EF-A9C9-3175918E6487}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice 10", "Practice 9\Practice 10.csproj", "{6641D170-7DE4-43A2-9BFB-7B17DD2D229F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice 9", "Practice 9\Practice 9.csproj", "{6641D170-7DE4-43A2-9BFB-7B17DD2D229F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
