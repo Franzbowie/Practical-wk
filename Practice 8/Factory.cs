@@ -64,21 +64,38 @@ namespace ConsoleApp1
                 if (allHavePhones)
                     Smartphones.Clear();
             }
+
             /// <summary>
-            /// Чтение списка телефонов
+            /// Описание телефона
             /// </summary>
-            /// <returns>список телефонов</returns>
-            public List<GentleSmartphone> GetListSmartphones()
+            /// <returns>строка для вывода</returns>
+            public string SmartphoneDescription()
             {
-                return Smartphones;
+                string message = "";
+
+                foreach (var smartphone in Smartphones)
+                    message += $"Телефон #{smartphone.SerialNumber}, нежность {smartphone.GetSensivity(smartphone)}\n";
+                
+                return message;
             }
+
             /// <summary>
-            /// Добавление телефона в список телефонов
+            /// Подсчет количества телефонов
             /// </summary>
-            /// <param name="smartphone"></param>
-            public void AddSmartphone(GentleSmartphone smartphone)
+            /// <returns>число телефонов в списке телефонов</returns>
+            public int GetListSmartphonesCount()
             {
-                Smartphones.Add(smartphone);
+                return Smartphones.Count;
+            }
+
+            /// <summary>
+            /// Добовление телефона
+            /// </summary>
+            /// <param name="serialNumber"></param>
+            /// <param name="sensivity"></param>
+            public void AddSmartphone(int serialNumber, byte sensivity)
+            {
+                Smartphones.Add(new GentleSmartphone(serialNumber, sensivity));
             }
         }
     }

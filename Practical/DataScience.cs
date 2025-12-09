@@ -7,7 +7,7 @@
         /// <summary>
         /// Помещает в коллекцию стажеров кандидатов с высокой успеваемостью и языком Python
         /// </summary>
-        /// <param name="candidates"></param>
+        /// <param name="candidates">список кандидатов на стажировку</param>
         public override void TraineeDistribution(List<Student> candidates)
         {
             int count = 0;

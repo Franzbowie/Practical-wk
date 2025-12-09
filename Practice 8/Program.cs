@@ -5,16 +5,16 @@
         static void Main(string[] args)
         {
             Factory factory = new Factory();
-            factory.AddSmartphone(new GentleSmartphone(1, 10));
-            factory.AddSmartphone(new GentleSmartphone(2, 20));
-            factory.AddSmartphone(new GentleSmartphone(3, 30));
-            factory.AddSmartphone(new GentleSmartphone(4, 40));
-            factory.AddSmartphone(new GentleSmartphone(5, 50));
-            factory.AddSmartphone(new GentleSmartphone(6, 60));
-            factory.AddSmartphone(new GentleSmartphone(7, 70));
-            factory.AddSmartphone(new GentleSmartphone(8, 80));
-            factory.AddSmartphone(new GentleSmartphone(9, 90));
-            factory.AddSmartphone(new GentleSmartphone(10, 100));
+            factory.AddSmartphone(1, 10);
+            factory.AddSmartphone(2, 20);
+            factory.AddSmartphone(3, 30);
+            factory.AddSmartphone(4, 40);
+            factory.AddSmartphone(5, 50);
+            factory.AddSmartphone(6, 60);
+            factory.AddSmartphone(7, 70);
+            factory.AddSmartphone(8, 80);
+            factory.AddSmartphone(9, 90);
+            factory.AddSmartphone(10, 100);
             Customer customer1 = new Customer("Нагрыз", 15);
             Customer customer2 = new Customer("Марсель", 35);
             Customer customer3 = new Customer("Бактыбек", 80);
@@ -33,8 +33,7 @@
             Console.WriteLine("Смартфоны на складе до продажи:");
 
             //Вывод списка телефонов до продажи
-            foreach (var phone in factory.GetListSmartphones())
-                Console.WriteLine($"Телефон #{phone.SerialNumber}, нежность {phone.GetSensivity(phone)}");
+            Console.WriteLine(factory.SmartphoneDescription()); 
 
             Console.WriteLine("Покупатель:");
 
@@ -48,10 +47,9 @@
             Console.WriteLine("Смартфоны на складе после продажи:");
 
             //Вывод списка оставшихся телефонов
-            foreach (var phone in factory.GetListSmartphones())
-                Console.WriteLine($"Телефон #{phone.SerialNumber}, нежность {phone.GetSensivity(phone)}");
+            Console.WriteLine(factory.SmartphoneDescription());
 
-            if (factory.GetListSmartphones().Count == 0)
+            if (factory.GetListSmartphonesCount() == 0)
                 Console.Write(" 0");
 
             Console.WriteLine("\nКлиенты:");
