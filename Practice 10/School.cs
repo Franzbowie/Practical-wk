@@ -24,22 +24,24 @@
         /// <summary>
         /// Прибавление еды лучшему и отнятие у худшего
         /// </summary>
-        /// <param name="students"></param>
-        public void Reward(Tuple<Student, Student> students)
+        /// <param name="students">кортеж лучшего и худшего учеников</param>
+        public string Reward(Tuple<Student, Student> students)
         {
             Student maxEmployee = students.Item1;
             Student minEmployee = students.Item2;
             Student speedRunner = new Student(maxEmployee.Number, maxEmployee.CountPhone, maxEmployee.CountLunch + 1, maxEmployee.Position);
-            Student outsider = new Student(minEmployee.Number, minEmployee.CountPhone, minEmployee.CountLunch -1, minEmployee.Position);
+            Student outsider = new Student(minEmployee.Number, minEmployee.CountPhone, minEmployee.CountLunch - 1, minEmployee.Position);
 
             for (int i = 0; i < Students.Count; i++)
             {
                 if (Students[i].Number == speedRunner.Number)
                     Students[i] = speedRunner;
-                
+
                 else if (Students[i].Number == outsider.Number)
                     Students[i] = outsider;
             }
+
+            return $"Ученик {minEmployee.Number} плохо работал и лишился обеда. Ученик {maxEmployee.Number} хорошо работал и получил дополнительный обед.";
         }
     }
 }

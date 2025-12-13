@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1
 {
-    struct Student : IComparable
+    class Student : IComparable
     {
         public int Number;
         public int CountPhone;

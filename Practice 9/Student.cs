@@ -25,13 +25,9 @@
                 return $"У дисциплины {discipline.Title} злой препод. Автоматов не будет.";
             }
 
-            if (discipline is English)
+            if (discipline is IHaveFinalControll && discipline is IHavePractice)
             {
-                return $"По дисциплине {discipline.Title} все получают автоматы.";
-            }
-
-            if (discipline is History history)
-            {
+                History history = discipline as History;
                 int practiceCount = Practices[history];
                 bool practiceCompleted = ((IHavePractice)history).CheckPracticeCount(practiceCount);
                 int finalControllCount = FinalControls[history];
@@ -51,8 +47,9 @@
                     return $"По дисциплине {discipline.Title} не выполнены условия автомата.";
             }
 
-            if (discipline is Programming programming)
+            if (discipline is IHavePractice)
             {
+                Programming programming = discipline as Programming;
                 int practiceCount = Practices[programming];
                 bool practiceCompleted = ((IHavePractice)programming).CheckPracticeCount(practiceCount);
 
@@ -64,8 +61,9 @@
                 return $"По дисциплине {discipline.Title} не выполнены условия автомата.";
             }
 
-            if (discipline is MathAnalysis mathAnalysis)
+            if (discipline is IHaveFinalControll)
             {
+                MathAnalysis mathAnalysis = discipline as MathAnalysis;
                 int finalControllCount = FinalControls[mathAnalysis];
                 bool testCompleted = ((IHaveFinalControll)mathAnalysis).CheckFinalControll(finalControllCount);
                 
@@ -77,6 +75,11 @@
                 return $"По дисциплине {discipline.Title} не выполнено условие по финальному тесту. Без автомата(";
             }
 
+            if (discipline is IHaveFinalControll == false && discipline is IHavePractice == false)
+            {
+                return $"По дисциплине {discipline.Title} все получают автоматы.";
+            }
+
             return "такой дисциплины нет";
         }
 
@@ -84,7 +87,7 @@
         /// Добавляет в словарь Practices количетсво сданных практик по дисциплине
         /// </summary>
         /// <param name="discipline"></param>
-        /// <param name="count"></param>
+        /// <param name="count">объект дисциплина, количество сданным практик</param>
         public void SetPractice(Discipline discipline, int count)
         {
             if (discipline is IHavePractice practiceDiscipline)
@@ -97,7 +100,7 @@
         /// Добавляет в словарь FinalControls балл финального теста по дисциплине
         /// </summary>
         /// <param name="discipline"></param>
-        /// <param name="score"></param>
+        /// <param name="score">объект дисцилпина, балл по финальному тесту</param>
         public void SetFinalScore(Discipline discipline, int score)
         {
             if (discipline is IHaveFinalControll finalDiscipline)
